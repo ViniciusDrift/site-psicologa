@@ -521,6 +521,109 @@ footer p { max-width: 58ch; }
   .wrap { width: min(1120px, calc(100% - 1.6rem)); }
 }
 
+.calendar-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .calendar {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .cal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .cal-head h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    text-transform: capitalize;
+  }
+  .cal-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .cal-nav:hover { background: var(--violet-soft); }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  .cal-grid span {
+    color: var(--muted);
+    font-weight: 600;
+    padding: 0.4rem 0;
+  }
+  .cal-grid .day {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.92rem;
+    position: relative;
+  }
+  .cal-grid .day.out { opacity: 0.35; }
+  .cal-grid .day.free { background: var(--sage-soft); }
+  .cal-grid .day.busy { background: var(--bg); color: var(--muted); }
+  .cal-grid .day.today { border: 2px solid var(--violet); font-weight: 600; }
+  .cal-grid .day.selected { background: var(--violet); color: var(--on-violet); font-weight: 600; }
+  .cal-legend {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+  .cal-legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .cal-legend i {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .slots h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+  .slots-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .slot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .slot .time { color: var(--violet); font-weight: 600; }
+  .slot .book {
+    font-size: 0.82rem;
+    background: var(--violet);
+    color: var(--on-violet);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .slot .book:hover { filter: brightness(1.08); }
+
+  @media (max-width: 780px) {
+    .calendar-wrap { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -618,7 +721,7 @@ footer p { max-width: 58ch; }
       <div class="wrap">
         <div class="art" aria-hidden="true" style="justify-self:center;width:min(100%,340px)">
           <div class="card-art" style="min-height:360px;padding-top:2rem">
-            <img class="portrait-photo" src="assets/thamiris.png" alt="Thamiris Ribeiro, Psicóloga" style="width:min(100%,240px);aspect-ratio:3/4;object-fit:cover;border-radius:180px 180px 24px 24px;background:var(--violet-soft)">
+            <img src="assets/thamiris2.jpg" alt="Thamiris Ribeiro, Psicóloga" style="width:min(100%,240px);aspect-ratio:3/4;object-fit:cover;border-radius:180px 180px 24px 24px;background:var(--violet-soft)">
           </div>
         </div>
         <div>
@@ -654,6 +757,39 @@ footer p { max-width: 58ch; }
             <p>Encontros no seu ritmo, com acompanhamento de tudo o que vai mudando ao longo do tempo.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section id="disponibilidade" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Disponibilidade</h2>
+          <p>Escolha um dia e horário que funcione para você. Depois é só confirmar pelo WhatsApp.</p>
+        </div>
+        <div class="calendar-wrap">
+          <div class="calendar">
+            <div class="cal-head">
+              <button class="cal-nav" id="cal-prev" aria-label="Mês anterior">‹</button>
+              <h3 id="cal-month"></h3>
+              <button class="cal-nav" id="cal-next" aria-label="Próximo mês">›</button>
+            </div>
+            <div class="cal-grid">
+              <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+              <div id="cal-days"></div>
+            </div>
+            <div class="cal-legend">
+              <span><i style="background:var(--sage)"></i>Disponível</span>
+              <span><i style="background:var(--line)"></i>Indisponível</span>
+              <span><i style="background:var(--violet)"></i>Selecionado</span>
+            </div>
+          </div>
+          <div class="slots">
+            <h3 id="slots-title">Horários livres</h3>
+            <div id="slots-list" class="slots-list">
+              <p style="color:var(--muted)">Selecione um dia para ver os horários.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -739,9 +875,119 @@ footer p { max-width: 58ch; }
     btn.setAttribute("aria-expanded", String(open));
   });
 
-  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
-})();
+nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+  })();
 
+  // Calendário de disponibilidade
+  (() => {
+    const monthNames = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    const dow = [1,2,3,4,5,6,0]; // Seg..Dom
+    const freeDays = new Set([1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,22,23,24,25,26,27,29,30,31]);
+    const freeHours = ["09:00","10:00","11:00","14:00","15:00","16:00","17:00","19:00","20:00"];
+
+    const today = new Date();
+    let viewDate = new Date(today.getFullYear(), today.getMonth(), 1);
+    let selectedDate = null;
+
+    const monthEl = document.getElementById("cal-month");
+    const daysEl = document.getElementById("cal-days");
+    const prevBtn = document.getElementById("cal-prev");
+    const nextBtn = document.getElementById("cal-next");
+    const slotsTitle = document.getElementById("slots-title");
+    const slotsList = document.getElementById("slots-list");
+
+    function isFree(date) {
+      if (date.getDay() === 0) return false; // Domingo
+      if (date.getDay() === 6 && date.getDate() > 20) return false; // Sábios após dia 20
+      return freeDays.has(date.getDate());
+    }
+
+    function renderCalendar() {
+      daysEl.innerHTML = "";
+      const year = viewDate.getFullYear();
+      const month = viewDate.getMonth();
+      monthEl.textContent = `${monthNames[month]} ${year}`;
+
+      const firstDay = new Date(year, month, 1);
+      const startOffset = dow.indexOf(firstDay.getDay());
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < startOffset; i++) {
+        const empty = document.createElement("div");
+        empty.className = "day out";
+        daysEl.appendChild(empty);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(year, month, d);
+        const dayEl = document.createElement("div");
+        dayEl.className = "day";
+        dayEl.textContent = d;
+
+        const isToday = date.toDateString() === today.toDateString();
+        if (isToday) dayEl.classList.add("today");
+
+        if (isFree(date)) {
+          dayEl.classList.add("free");
+        } else {
+          dayEl.classList.add("busy");
+        }
+
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) {
+          dayEl.classList.add("selected");
+        }
+
+        dayEl.addEventListener("click", () => {
+          if (!isFree(date)) return;
+          selectedDate = date;
+          renderCalendar();
+          renderSlots();
+        });
+
+        daysEl.appendChild(dayEl);
+      }
+    }
+
+    function renderSlots() {
+      if (!selectedDate) {
+        slotsTitle.textContent = "Horários livres";
+        slotsList.innerHTML = '<p style="color:var(--muted)">Selecione um dia para ver os horários.</p>';
+        return;
+      }
+
+      const dateStr = selectedDate.toLocaleDateString("pt-BR", {
+        day: "2-digit", month: "long", year: "numeric"
+      });
+      slotsTitle.textContent = `Horários em ${dateStr}`;
+
+      const booked = JSON.parse(localStorage.getItem("booked_" + selectedDate.toDateString()) || "[]");
+      slotsList.innerHTML = "";
+
+      freeHours.forEach((h) => {
+        const isBooked = booked.includes(h);
+        const slot = document.createElement("div");
+        slot.className = "slot";
+        if (isBooked) {
+          slot.innerHTML = `<span class="time">${h}</span><span style="color:var(--muted);font-size:0.88rem">Ocupado</span>`;
+        } else {
+          const wa = `https://wa.me/5521971621431?text=Olá%2C+Thamiris%2C+gostaria+de+agendar+para+o+dia+${dateStr+`+às+${h}`}`;
+          slot.innerHTML = `<span class="time">${h}</span><a class="book" href="${wa}" rel="noopener noreferrer">Agendar</a>`;
+        }
+        slotsList.appendChild(slot);
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1);
+      renderCalendar();
+    });
+    nextBtn.addEventListener("click", () => {
+      viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1);
+      renderCalendar();
+    });
+
+    renderCalendar();
+  })();
 </script>
 </body>
 </html>
