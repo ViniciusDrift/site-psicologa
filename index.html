@@ -773,9 +773,8 @@ footer p { max-width: 58ch; }
               <h3 id="cal-month"></h3>
               <button class="cal-nav" id="cal-next" aria-label="Próximo mês">›</button>
             </div>
-            <div class="cal-grid">
+            <div class="cal-grid" id="cal-grid">
               <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
-              <div id="cal-days"></div>
             </div>
             <div class="cal-legend">
               <span><i style="background:var(--sage)"></i>Disponível</span>
@@ -890,7 +889,7 @@ nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close
     let selectedDate = null;
 
     const monthEl = document.getElementById("cal-month");
-    const daysEl = document.getElementById("cal-days");
+    const daysEl = document.getElementById("cal-grid");
     const prevBtn = document.getElementById("cal-prev");
     const nextBtn = document.getElementById("cal-next");
     const slotsTitle = document.getElementById("slots-title");
@@ -903,7 +902,6 @@ nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close
     }
 
     function renderCalendar() {
-      daysEl.innerHTML = "";
       const year = viewDate.getFullYear();
       const month = viewDate.getMonth();
       monthEl.textContent = `${monthNames[month]} ${year}`;
@@ -911,6 +909,10 @@ nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close
       const firstDay = new Date(year, month, 1);
       const startOffset = dow.indexOf(firstDay.getDay());
       const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      // Remove only the day cells (keep the weekday headers)
+      const existingDays = daysEl.querySelectorAll(".day");
+      existingDays.forEach(d => d.remove());
 
       for (let i = 0; i < startOffset; i++) {
         const empty = document.createElement("div");
