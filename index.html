@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thamiris Ribeiro | Psicóloga</title>
+  <meta name="description" content="Psicóloga Thamiris Ribeiro. Um espaço para se ouvir com calma. Atendimento online. Agende sua primeira conversa.">
+  <meta name="theme-color" content="#5c4a86">
+  <meta property="og:title" content="Thamiris Ribeiro | Psicóloga">
+  <meta property="og:description" content="Um espaço para você se ouvir com calma. Terapia online, com escuta acolhedora e sem julgamento.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg: #f6f3ee;
+  --bg-2: #efe8f4;
+  --surface: #fffdf9;
+  --ink: #2a2438;
+  --muted: #6b6378;
+  --violet: #5c4a86;
+  --violet-deep: #46366a;
+  --on-violet: #fffdf9;
+  --violet-soft: #e8dff3;
+  --sage: #8fb39a;
+  --sage-soft: #dceadf;
+  --sand: #f1dcc8;
+  --line: #e4dce8;
+  --shadow: 0 18px 50px rgba(70, 54, 106, 0.08);
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius: 28px;
+  --header-h: 74px;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after { box-sizing: inherit; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #efe4f6 0%, transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, #f7e7d6 0%, transparent 50%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.12;
+}
+
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.wrap {
+  width: min(1120px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--violet);
+  color: var(--on-violet);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* Header */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+}
+
+.top .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  gap: 1rem;
+}
+
+.brand {
+  text-decoration: none;
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.brand small {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: 0.97rem;
+}
+.nav a { text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+
+.menu-btn {
+  display: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink);
+  margin: 0 auto;
+  position: relative;
+  border-radius: 2px;
+}
+.menu-btn span::before,
+.menu-btn span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.menu-btn span::before { top: -6px; }
+.menu-btn span::after { top: 6px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--violet);
+  color: var(--on-violet);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 1.45rem;
+  border-radius: 999px;
+  border: 0;
+  box-shadow: 0 10px 24px rgba(92, 74, 134, 0.22);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  box-shadow: none;
+}
+.btn.ghost:hover { border-color: var(--violet); filter: none; }
+.nav .btn {
+  color: var(--on-violet);
+  padding: 0.62rem 1.15rem;
+  font-size: 0.94rem;
+}
+
+/* Hero */
+.hero { padding: clamp(2.4rem, 6vw, 5.2rem) 0 clamp(3rem, 7vw, 6rem); }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--violet);
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+.kicker i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--sage);
+}
+.hero h1 {
+  font-size: clamp(2.45rem, 6vw, 4.5rem);
+  max-width: 13ch;
+  font-weight: 400;
+}
+.hero .lead {
+  margin-top: 1.4rem;
+  font-size: 1.18rem;
+  color: var(--muted);
+  max-width: 42ch;
+}
+.hero .actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+.who {
+  margin-top: 2.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+.who strong { color: var(--ink); font-weight: 600; }
+
+.art {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 460px);
+}
+.card-art {
+  background: linear-gradient(180deg, var(--violet-soft), #f7efe6);
+  border-radius: 48% 48% 28px 28px;
+  padding: 2.4rem 1.5rem 0;
+  min-height: 420px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+.portrait-photo {
+  width: min(100%, 320px);
+  margin: 0 auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 180px 180px 24px 24px;
+  background: var(--violet-soft);
+}
+.art .chip {
+  position: absolute;
+  left: -2%;
+  bottom: 12%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.65rem 1.05rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  box-shadow: var(--shadow);
+}
+.art .chip i {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--sage);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.card-art { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card-art, .btn { animation: none; transition: none; }
+}
+
+section { padding: clamp(3.4rem, 8vw, 6.4rem) 0; }
+.sec-head { max-width: 40rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sec-head h2 { font-size: clamp(2rem, 4.4vw, 3.15rem); }
+.sec-head p { margin-top: 1rem; color: var(--muted); font-size: 1.12rem; max-width: 52ch; }
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+.tile {
+  padding: clamp(1.4rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  min-height: 220px;
+}
+.tile h3 { font-size: 1.42rem; }
+.tile p { font-size: 1rem; max-width: 46ch; }
+.tile svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tile .ic { margin-bottom: auto; }
+.t1 { grid-column: span 7; background: var(--violet); color: var(--on-violet); border-radius: 44px 44px 44px 12px; min-height: 260px; }
+.t1 h3 { font-size: clamp(1.7rem, 3vw, 2.15rem); }
+.t2 { grid-column: span 5; background: var(--sage-soft); border-radius: 12px 44px 44px 44px; }
+.t3 { grid-column: span 4; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.t4 { grid-column: span 4; background: var(--sand); border-radius: var(--radius); }
+.t5 { grid-column: span 4; background: var(--violet-soft); border-radius: var(--radius); }
+.t6 { grid-column: span 5; background: var(--surface); border: 1px solid var(--line); border-radius: 44px 12px 44px 44px; }
+.t7 { grid-column: span 7; background: var(--sage-soft); border-radius: 44px 44px 12px 44px; }
+
+.about {
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-block: 1px solid var(--line);
+}
+.about .wrap {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.quote {
+  margin-top: 1.6rem;
+  padding: 1.2rem 1.3rem;
+  border-left: 3px solid var(--violet);
+  background: var(--violet-soft);
+  border-radius: 0 18px 18px 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+.facts { margin-top: 1.6rem; display: grid; gap: 0.6rem; padding: 0; list-style: none; }
+.facts li { display: flex; gap: 0.75rem; align-items: baseline; }
+.facts li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--sage);
+  flex: none;
+  transform: translateY(-1px);
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  counter-reset: s;
+}
+.steps li {
+  counter-increment: s;
+  position: relative;
+  padding-top: 1.6rem;
+  border-top: 2px solid var(--line);
+}
+.steps li::before {
+  content: counter(s);
+  position: absolute;
+  top: -1.1rem;
+  left: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--violet);
+  color: var(--on-violet);
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.steps h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+.steps p { color: var(--muted); }
+
+.faq { max-width: 46rem; }
+details { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary {
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+";
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  color: var(--violet);
+  transition: transform 0.2s ease;
+  flex: none;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin-top: 0.75rem; color: var(--muted); max-width: 60ch; }
+
+.cta { padding-top: 0; }
+.cta .box {
+  background: linear-gradient(135deg, var(--violet-deep), var(--violet));
+  color: var(--on-violet);
+  border-radius: 42px;
+  padding: clamp(2rem, 6vw, 4.2rem);
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta h2 { font-size: clamp(2rem, 4.6vw, 3.2rem); max-width: 16ch; }
+.cta p { margin-top: 1rem; opacity: 0.92; max-width: 44ch; }
+.cta .btn { background: var(--on-violet); color: var(--violet); justify-self: start; box-shadow: none; }
+.cta .ring {
+  position: absolute;
+  right: -90px;
+  top: -90px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--on-violet) 22%, transparent);
+  pointer-events: none;
+}
+.cta .ring.b { right: -30px; top: -30px; width: 180px; height: 180px; }
+.cta .side { position: relative; justify-self: end; }
+
+footer { padding: 2rem 0 5.5rem; color: var(--muted); font-size: 0.93rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; }
+footer p { max-width: 58ch; }
+
+.wa-float {
+  position: fixed;
+  right: 1.1rem;
+  bottom: calc(1.1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+  text-decoration: none;
+}
+.wa-float svg { width: 28px; height: 28px; fill: currentColor; }
+
+@media (max-width: 900px) {
+  .hero .wrap,
+  .about .wrap,
+  .cta .box { grid-template-columns: 1fr; }
+  .art { width: min(100%, 380px); }
+  .steps { grid-template-columns: 1fr; gap: 2.25rem; }
+  .cta .side { justify-self: start; }
+  .t1, .t2, .t3, .t4, .t5, .t6, .t7 { grid-column: span 12; }
+  .tile { min-height: 0; }
+  .tile .ic { margin-bottom: 0.4rem; }
+}
+
+@media (max-width: 780px) {
+  .menu-btn { display: grid; place-items: center; }
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--header-h);
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 0.6rem 1.25rem 1.1rem;
+  }
+  .nav.open { display: flex; }
+  .nav a { padding: 0.75rem 0; }
+  .nav .btn { width: 100%; margin-top: 0.4rem; }
+}
+
+@media (max-width: 480px) {
+  .art .chip { left: 0; }
+  .wrap { width: min(1120px, calc(100% - 1.6rem)); }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#inicio">Pular para o conteúdo</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#inicio">Thamiris Ribeiro<small>Psicóloga</small></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span>
+      </button>
+      <nav class="nav" id="menu" aria-label="Principal">
+        <a href="#por-que-terapia">Por que terapia</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a class="btn" href="#contato">Agendar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <div class="hero">
+      <div class="wrap">
+        <div>
+          <p class="kicker"><i></i>Atendimento psicológico online</p>
+          <h1>Um espaço para você se ouvir com calma.</h1>
+          <p class="lead">A terapia ajuda a entender o que você sente, cuidar do que pesa e seguir com mais leveza. Sem pressa e sem julgamento.</p>
+          <div class="actions">
+            <a class="btn" href="https://wa.me/5500000000000" rel="noopener noreferrer">Agendar pelo WhatsApp</a>
+            <a class="btn ghost" href="#por-que-terapia">Por que fazer terapia</a>
+          </div>
+          <div class="who">
+            <span><strong>Thamiris Ribeiro</strong> Psicóloga</span>
+            <span>CRP 00/00000</span>
+          </div>
+        </div>
+
+        <div class="art" aria-hidden="true">
+          <div class="card-art">
+            <svg viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg" role="img">
+              <ellipse cx="160" cy="392" rx="118" ry="18" fill="#e4dce8"/>
+              <circle cx="160" cy="148" r="72" fill="#c9b7e2"/>
+              <path d="M88 148c8-54 40-86 72-86s64 32 72 86" fill="#d8c7b0"/>
+              <path d="M70 420c8-132 42-198 90-198s82 66 90 198z" fill="#5c4a86"/>
+              <path d="M118 148c6 22 24 36 42 36s36-14 42-36" fill="none" stroke="#5c4a86" stroke-width="3"/>
+            </svg>
+          </div>
+          <div class="chip"><i></i>Sessões online</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="por-que-terapia">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Por que a terapia faz bem</h2>
+          <p>Você não precisa estar em crise para começar. Estes são alguns dos motivos pelos quais tanta gente encontra na terapia um ponto de apoio.</p>
+        </div>
+        <div class="mosaic">
+          <article class="tile t1">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h3>Você se conhece melhor</h3>
+            <p>Entenda por que sente, pensa e reage do jeito que reage. Enxergar seus padrões é o primeiro passo para mudar o que não serve mais.</p>
+          </article>
+          <article class="tile t2">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c3-3 6 3 9 0s6 3 9 0M3 15c3-3 6 3 9 0s6 3 9 0"/></svg></span>
+            <h3>Menos ansiedade e estresse</h3>
+            <p>Aprenda formas práticas de desacelerar a mente e lidar com a pressão do dia a dia.</p>
+          </article>
+          <article class="tile t3">
+            <span class="ic" style="color:var(--violet)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg></span>
+            <h3>Relações mais saudáveis</h3>
+            <p>Comunique-se com clareza, coloque limites e construa vínculos mais equilibrados.</p>
+          </article>
+          <article class="tile t4">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
+            <h3>Emoções sem tanto peso</h3>
+            <p>Dar nome ao que você sente ajuda a atravessar tristeza, raiva e frustração sem ser dominado por elas.</p>
+          </article>
+          <article class="tile t5">
+            <span class="ic" style="color:var(--violet)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+            <h3>Decisões com clareza</h3>
+            <p>Organize as ideias quando estiver diante de uma mudança ou de uma escolha difícil.</p>
+          </article>
+          <article class="tile t6">
+            <span class="ic" style="color:var(--violet)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6z"/></svg></span>
+            <h3>Cuidar antes da crise</h3>
+            <p>Terapia não é só para quando tudo desmorona. Acompanhar sua saúde mental de forma contínua previne desgaste.</p>
+          </article>
+          <article class="tile t7">
+            <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg></span>
+            <h3>Um lugar seguro para falar</h3>
+            <p>Aqui você pode se expressar sem medo de ser julgado. Tudo o que é dito fica protegido pelo sigilo profissional.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="about">
+      <div class="wrap">
+        <div class="art" aria-hidden="true" style="justify-self:center;width:min(100%,340px)">
+          <div class="card-art" style="min-height:360px;padding-top:2rem">
+            <svg viewBox="0 0 320 360" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="160" cy="128" r="64" fill="#8fb39a"/>
+              <path d="M64 360c10-118 44-178 96-178s86 60 96 178z" fill="#5c4a86"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h2>Prazer, eu sou a Thamiris</h2>
+          <p style="margin-top:1.1rem;color:var(--muted);max-width:56ch">Sou psicóloga e acredito que a terapia é um trabalho feito a dois: eu escuto com atenção, e você define o ritmo. Cada pessoa chega com uma história diferente, e o cuidado precisa respeitar isso.</p>
+          <p class="quote">“Você não precisa ter tudo resolvido para começar. Só precisa de um primeiro passo.”</p>
+          <ul class="facts">
+            <li>Escuta acolhedora e sem julgamento</li>
+            <li>Sessões online, de onde você estiver</li>
+            <li>Sigilo garantido pelo código de ética da profissão</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Como funciona o começo</h2>
+          <p>Dar o primeiro passo costuma ser a parte mais difícil. Por isso ele é simples.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Primeira conversa</h3>
+            <p>Você conta o que te trouxe até aqui e tira as dúvidas sobre o processo.</p>
+          </li>
+          <li>
+            <h3>Combinamos o caminho</h3>
+            <p>Definimos seus objetivos, os horários e o formato que fica melhor para você.</p>
+          </li>
+          <li>
+            <h3>Sessões regulares</h3>
+            <p>Encontros no seu ritmo, com acompanhamento de tudo o que vai mudando ao longo do tempo.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="duvidas" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Dúvidas comuns</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Preciso estar mal para começar terapia?</summary>
+            <p>Não. Muita gente procura terapia para se conhecer melhor, lidar com uma fase de mudança ou simplesmente cuidar da cabeça, mesmo sem um problema específico.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo dura o processo?</summary>
+            <p>Depende dos seus objetivos e do seu momento. Na primeira conversa a gente combina o que faz sentido para você, e o plano pode mudar ao longo do caminho.</p>
+          </details>
+          <details>
+            <summary>O que eu falo nas sessões é sigiloso?</summary>
+            <p>Sim. O sigilo é um dever da profissão e vale para tudo o que é conversado.</p>
+          </details>
+          <details>
+            <summary>Como funciona a terapia online?</summary>
+            <p>Por chamada de vídeo, com dia e horário marcados. Você só precisa de internet e de um lugar em que se sinta à vontade para falar.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="cta">
+      <div class="wrap">
+        <div class="box">
+          <span class="ring" aria-hidden="true"></span>
+          <span class="ring b" aria-hidden="true"></span>
+          <div>
+            <h2>Que tal começar com uma conversa?</h2>
+            <p>Mande uma mensagem e escolha o melhor horário para a sua primeira sessão.</p>
+          </div>
+          <div class="side">
+            <a class="btn" href="https://wa.me/5500000000000" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong style="color:var(--ink)">Thamiris Ribeiro</strong><br>
+        Psicóloga, CRP 00/00000
+      </div>
+      <p>Este site não substitui atendimento de emergência. Se você estiver em sofrimento intenso, ligue para o CVV no 188, 24 horas por dia.</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/5500000000000" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 2.1 17.7L1 23l5.4-1.1A11 11 0 1 0 20.5 3.5zm-8.5 17a9.1 9.1 0 0 1-4.6-1.3l-.33-.2-3.2.67.68-3.12-.21-.33A9.1 9.1 0 1 1 12 20.5zm5-6.8c-.27-.14-1.6-.79-1.85-.88s-.43-.14-.61.14-.7.88-.86 1.06-.32.2-.59.07a7.4 7.4 0 0 1-2.18-1.34 8.2 8.2 0 0 1-1.5-1.87c-.16-.27 0-.42.12-.55.12-.12.27-.32.4-.48s.18-.27.27-.45.05-.34-.02-.48-.61-1.47-.84-2.02c-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34s-.96.94-.96 2.28.98 2.64 1.12 2.82 1.93 2.95 4.67 4.14c.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.53-.08 1.6-.65 1.83-1.28.22-.63.22-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/></svg>
+  </a>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thamiris Ribeiro",
+    "jobTitle": "Psicóloga",
+    "description": "Atendimento psicológico online."
+  }
+  </script>
+  <script>
+(() => {
+  const btn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".nav");
+  if (!btn || !nav) return;
+
+  const close = () => {
+    nav.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+  };
+
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(open));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+})();
+
+</script>
+</body>
+</html>
